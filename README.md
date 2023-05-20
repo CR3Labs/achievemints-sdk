@@ -38,20 +38,20 @@ To obtain an API Key, register at https://beta.achievemints.xyz.
 ```python
 # Setup SDK
 key = os.environ.get('API_KEY')
-client = AchievemintsSDK(api_key=key)
+sdk = AchievemintsSDK(api_key=key)
 
 # Return a list of your games
-games = client.make_request('/game') # will send a GET request to the games endpoint
+games = sdk.make_request('/game') # will send a GET request to the games endpoint
 logger.info("Get games:\n{}".format(games))
 
-# Add a player to a game
-#  This ensures on-chain events are watched for this player/game combination
-game_id = games[0]['id']
-player = client.make_request('/game/{}/player'.format(game_id), method="POST", body={"wallet": "0x0"})
+# Enable an integration
+#  This ensures on-chain events are watched for a specific type of integration
+# TODO: currently, this can only be accomplished in the UI
 
 # create a subscription
-# to listen to your games blockchain events
-subscription = client.subscribe("fdd74c25-e7bf-42da-b6e7-d4b5f9ec95d1")
+# to listen to your game events
+game_id = games[0]['id']
+subscription = sdk.subscribe(game_id)
 for event in subscription.events():
         pprint.pprint(json.loads(event.data))
 ```

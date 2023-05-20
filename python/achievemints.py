@@ -9,8 +9,8 @@ import sys
 from math import floor
 
 # API Endpoint
-# URL = 'https://beta.achievemints.xyz/api/'
-URL = 'http://localhost:3000/api/'
+URL = 'https://beta.achievemints.xyz/api/'
+# URL = 'http://localhost:3000/api/'
 
 # Setup Logger
 # ---------------
