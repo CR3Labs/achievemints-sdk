@@ -19,3 +19,4 @@ game_id = resources[0]['id']
 subscription = sdk.subscribe(game_id)
 for event in subscription.events():
         pprint.pprint(json.loads(event.data))
+        
